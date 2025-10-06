@@ -8,9 +8,9 @@ export const FirstStepsApp = () => {
     <>        
         <h1>Carrito de Compras</h1>
         
-        <ItemCounter />
-        <ItemCounter />
-        <ItemCounter />
+        <ItemCounter itemName="Nintendo switch 2" quantity={2}/>
+        <ItemCounter itemName="Play station 5" quantity={3}/>
+        <ItemCounter itemName="Game Boy" quantity={4}/>
         
         
     </>

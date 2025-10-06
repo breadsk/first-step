@@ -7,7 +7,16 @@ const styles:CSSProperties = {
         marginTop: 10,
     }
 
-export const ItemCounter = () => {
+interface Props {
+    itemName:string;
+    quantity?:number; // number | undefined
+}
+
+
+export const ItemCounter = ({itemName,quantity}:Props) => {
+
+    console.log(itemName);
+
   return (
     <section style={styles}>
         <span style={{
@@ -15,7 +24,7 @@ export const ItemCounter = () => {
 
         }}>Nintendo Switch 2</span>
         <button>+1</button>
-        <span>10</span>
+        <span>{quantity}</span>
         <button>-1</button>
     </section>
   )
