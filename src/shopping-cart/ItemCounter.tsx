@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react"
+import { useState, type CSSProperties } from "react"
 
 const styles:CSSProperties = {
         display: 'flex',
@@ -14,12 +14,21 @@ interface Props {
 }
 
 
-export const ItemCounter = ({productName,quantity}:Props) => {
+export const ItemCounter = ({productName,quantity = 1}:Props) => {
     
-    const handleClick = () => {
-        console.log(`Click en ${productName}`);
+    const [ count , setCount ] = useState(quantity)
+
+    // setCount(1000) esto no se hace, este dispatcher hara que se 
+    // dibuje nuevamente el componente
+
+    const handleClickAdd = () => {
+        setCount(count + 1)
     }
 
+    const handleSubstract = () => {
+        if(count === 1) return;
+        setCount(count - 1)
+    }
 
   return (
     <section style={styles}>
@@ -31,10 +40,12 @@ export const ItemCounter = ({productName,quantity}:Props) => {
             // onMouseEnter={() => {
             //     console.log(`Mouse enter ${productName}`);
             // }}
-            onClick={handleClick}
+            onClick={handleClickAdd}
         >+1</button>
-        <span>{quantity}</span>
-        <button>-1</button>
+        <span>{count}</span>
+        <button
+            onClick={handleSubstract}
+        >-1</button>
     </section>
   )
 }
